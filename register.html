@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Registration</title>
+  <link rel="stylesheet" href="register.css">
+</head>
+<body>
+  <div class="header">
+    <span class="red">Appoint</span><span class="green">Heal</span>
+  </div>
+
+  <div class="form-container">
+    <h2>Patient Registration</h2>
+    <form action="register.php" method="POST">
+      <label>Name:</label>
+      <input type="text" name="name" required>
+
+      <label>Gender:</label>
+      <select name="gender" required>
+        <option value="">Select</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label>Date of Birth:</label>
+      <input type="date" name="dob" required>
+
+      <label>Phone:</label>
+      <input type="text" name="phone" required>
+
+      <label>Address:</label>
+      <textarea name="address" required></textarea>
+
+      <label>Email:</label>
+      <input type="email" name="email" required>
+
+      <label>Password:</label>
+      <input type="password" name="password" required>
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <div class="footer">
+    AppointHeal connects patients with the best doctors. Your health our priority. ✅
+  </div>
+</body>
+</html>

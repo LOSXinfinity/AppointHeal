@@ -1,0 +1,176 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1fa2ff, #12d8fa, #a6ffcb); /* Matching background theme */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), inset 0 2px 5px rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  width: 450px;
+  max-width: 100%;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+  transform: translateY(-5px);
+}
+
+h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1.5px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.3);
+  color: #0f172a; /* Deep professional slate */
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 600;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.6);
+  border-color: #fff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(15, 23, 42, 0.5);
+}
+
+select option {
+  background: #fff;
+  color: #333;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+button {
+  margin-top: 30px;
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  color: #1fa2ff; /* match theme */
+  border: none;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  border-radius: 50px;
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.6);
+  background: #fff;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.header {
+  width: 70%; /* Floating pill effect */
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2)); /* blended glossy color */
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  text-align: center;
+  font-size: 38px;
+  font-weight: 900;
+  border-radius: 50px; /* Pill shape */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  letter-spacing: 2px;
+  animation: float 6s ease-in-out infinite;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.footer {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  text-align: center;
+  font-size: 19px; /* Increased font size for readability */
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a; /* Deep professional slate blue */
+  text-shadow: none; /* Removing text shadow for a cleaner professional look */
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
+  width: 90%;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.footer:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}

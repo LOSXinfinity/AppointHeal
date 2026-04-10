@@ -1,0 +1,177 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1fa2ff, #12d8fa, #a6ffcb);
+  /* attractive, vibrant, fresh gradient */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* dynamically fits header/footer */
+  min-height: 100vh;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 70%; /* Floating pill effect */
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2)); /* blended glossy color */
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  text-align: center;
+  font-size: 38px;
+  font-weight: 900;
+  border-radius: 50px; /* Pill shape */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  letter-spacing: 2px;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.item {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.main {
+  display: flex;
+  gap: 30px;
+  background: transparent;
+  border-radius: 16px;
+  height: 100%;
+}
+
+.left,
+.right {
+  flex: 1;
+  /* Equal width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  box-sizing: border-box;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.left:hover,
+.right:hover {
+  transform: translateY(-5px);
+}
+
+.bold {
+  font-weight: bold;
+  margin-bottom: 25px;
+  font-size: 24px;
+  text-align: center;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 800;
+  color: #1fa2ff;
+  /* match theme */
+  background: #ffffff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6);
+  background: #fdfdfd;
+}
+
+.footer {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  text-align: center;
+  font-size: 19px; /* Increased font size for readability */
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a; /* Deep professional slate blue */
+  text-shadow: none; /* Removing text shadow for a cleaner professional look */
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
+  width: 90%;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.footer:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.appointment-container {
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #13ddd6;
+  border-radius: 8px;
+}
+
+.appointment-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.appointment-container label {
+  display: block;
+  margin-top: 10px;
+}
+
+.appointment-container select,
+.appointment-container button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+#message {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
