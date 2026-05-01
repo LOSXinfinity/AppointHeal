@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("iss", $did, $day, $time);
         $stmt->execute();
         if ($stmt->get_result()->num_rows > 0) {
-            $message = "❌ This slot is already booked.";
+            $message = "Ã¢ÂÅ’ This slot is already booked.";
         } else {
             $stmt = $conn->prepare("INSERT INTO appointment (PID, DID, day, time, status) VALUES (?, ?, ?, ?, 1)");
             $stmt->bind_param("iiss", $pid, $did, $day, $time);
@@ -32,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $update = $conn->prepare("UPDATE doctor_time SET isBooked = 1 WHERE DID = ? AND time = ?");
                 $update->bind_param("is", $did, $time);
                 $update->execute();
-                $message = "✅ Appointment booked successfully!";
+                $message = "Ã¢Å“â€¦ Appointment booked successfully!";
             } else {
-                $message = "⚠️ Booking failed. Please try again.";
+                $message = "Ã¢Å¡Â Ã¯Â¸Â Booking failed. Please try again.";
             }
         }
     }
@@ -58,9 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $update->bind_param("is", $did, $time);
             $update->execute();
 
-            $message = "✅ Appointment cancelled.";
+            $message = "Ã¢Å“â€¦ Appointment cancelled.";
         } else {
-            $message = "⚠️ No appointment found.";
+            $message = "Ã¢Å¡Â Ã¯Â¸Â No appointment found.";
         }
     }
 }
@@ -104,136 +104,140 @@ $appointment = $stmt->get_result()->fetch_assoc();
     <title>Book Appointment</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap");
+
+        :root {
+            --surface:       rgba(255,255,255,0.05);
+            --surface-hover: rgba(255,255,255,0.09);
+            --border:        rgba(255,255,255,0.10);
+            --text-primary:  #f8fafc;
+            --text-muted:    #94a3b8;
+            --accent:        #f59e0b;
+            --accent-light:  #fbbf24;
+            --danger:        #ef4444;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
         .container {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             grid-template-rows: auto auto 1fr auto;
-            gap: 25px;
+            gap: 24px;
             min-height: 100vh;
-            padding: 30px;
-            box-sizing: border-box;
+            padding: 24px;
         }
 
-        .item {
-            box-sizing: border-box;
-        }
+        .item { box-sizing: border-box; }
 
-        .item.header, .item.footer {
-            grid-column: 1 / -1;
-        }
+        .item.header, .item.footer { grid-column: 1 / -1; }
 
-        .item.header h1 {
-            margin: 0;
-            font-size: inherit;
-            font-weight: inherit;
-        }
+        .item.header h1 { margin: 0; font-size: inherit; font-weight: inherit; }
 
-        #sidebar {
-            grid-row: 2 / 4;
-            grid-column: 1 / 4;
-        }
+        #sidebar    { grid-row: 2 / 4; grid-column: 1 / 4; }
+        #navigation { grid-column: 4 / 10; }
+        #ads        { grid-row: 2 / 4; grid-column: 10 / 13; }
+        #main       { grid-column: 4 / 10; grid-row: 3 / 4; }
 
-        #navigation {
-            grid-column: 4 / 10;
-        }
-
-        #ads {
-            grid-row: 2 / 4;
-            grid-column: 10 / 13;
-        }
-
-        #main {
-            grid-column: 4 / 10;
-            grid-row: 3 / 4;
-        }
-
-        /* Luxurious Glass Panels */
+        /* Glass panels */
         #sidebar, #navigation, #ads, #main {
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--surface);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-            padding: 30px;
-            color: #fff;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            padding: 24px;
+            color: var(--text-primary);
         }
 
         h3, h2 {
+            font-family: "Inter", sans-serif;
             margin-top: 0;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             font-size: 24px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            border-bottom: 2px solid rgba(255,255,255,0.3);
-            padding-bottom: 12px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            color: var(--text-primary);
         }
 
         p, label {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-family: "Inter", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
             display: block;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            color: var(--text-primary);
         }
 
         select {
             width: 100%;
-            padding: 14px;
-            margin-bottom: 25px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
             border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            background: rgba(255, 255, 255, 0.3);
-            color: #0f172a;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.07);
+            color: var(--text-primary);
             font-size: 16px;
-            font-weight: 700;
-            box-sizing: border-box;
-            backdrop-filter: blur(10px);
+            font-family: "Inter", sans-serif;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
-
         select:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.6);
-            border-color: #fff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            background: rgba(255,255,255,0.12);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(245,158,11,0.2);
         }
-
-        select option {
-            color: #000;
-        }
+        select option { background: #1e293b; color: #f8fafc; }
 
         button {
             width: 100%;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
-            color: #1fa2ff; 
+            background: var(--accent);
+            color: #0f172a;
             border: none;
             font-size: 16px;
+            font-family: "Inter", sans-serif;
             font-weight: 900;
             cursor: pointer;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 48px;
+            box-shadow: 0 4px 16px rgba(245,158,11,0.4);
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
             padding: 16px;
-            margin-top: 10px;
+            margin-top: 8px;
         }
-
         button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6);
-            background: #fff;
+            box-shadow: 0 8px 24px rgba(245,158,11,0.6);
+            background: var(--accent-light);
         }
 
         #logoutBtn, #cancelBtn {
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
-            color: white;
-            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+            background: var(--danger);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(239,68,68,0.4);
+        }
+        #logoutBtn:hover, #cancelBtn:hover {
+            background: #f87171;
+            box-shadow: 0 8px 24px rgba(239,68,68,0.6);
         }
 
-        #logoutBtn:hover, #cancelBtn:hover {
-            background: linear-gradient(135deg, #ff4b2b, #ff416c);
-            box-shadow: 0 8px 30px rgba(255, 65, 108, 0.8);
+        #backBtn {
+            background: #334155;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            margin-top: 16px;
+        }
+        #backBtn:hover {
+            background: #475569;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
     </style>
 </head>
@@ -269,6 +273,7 @@ $appointment = $stmt->get_result()->fetch_assoc();
             <form action="logout.php" method="post">
                 <button type="submit" id="logoutBtn">Logout</button>
             </form>
+            <a href="doctor_dashboard.php"><button type="button" id="backBtn">Back to Dashboard</button></a>
         </div>
 
         <!-- Main -->
@@ -301,9 +306,11 @@ $appointment = $stmt->get_result()->fetch_assoc();
 
         <!-- Footer -->
         <div class="item footer">
-            AppointHeal connects patients with the best doctors. Your health, our priority. ✅
+            AppointHeal connects patients with the best doctors. Your health, our priority. Ã¢Å“â€¦
         </div>
     </div>
 </body>
 </html>
 <?php $conn->close(); ?>
+
+
